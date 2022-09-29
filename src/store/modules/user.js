@@ -21,12 +21,23 @@ const user = {
     login ({ commit, getters }, { username, password }) {
       return new Promise(async (resolve, reject) => {
         try {
-          const result = await api.login({ username, password })
-          const { token, refreshToken } = result.data
-          setToken(token, refreshToken)
-          const userInfo = await api.getUser()
-          commit('SET_USER_INFO', userInfo.data)
-          commit('SET_PERMISSION_ROUTER', userInfo.data.authority)
+          const {
+            data: {
+              data: {
+                avatar,
+                userName,
+                token
+              }, data: result
+            }
+          } = await api.login({ username, password })
+          const { access_token: accessToken, refresh_token: refreshToken } = token
+          setToken(accessToken, refreshToken)
+          // const userInfo = await api.getUser()
+          commit('SET_USER_INFO', {
+            avatar,
+            userName
+          })
+          commit('SET_PERMISSION_ROUTER', 'TENANT_ADMIN')
           router.push({ path: getters.permissionRouter[0].path })
           resolve(result)
         } catch (error) {

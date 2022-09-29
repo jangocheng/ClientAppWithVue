@@ -5,11 +5,12 @@ import api from '@/api'
 import router from '@/router'
 
 // 允许携带cookie
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = false
 
 // create an axios instance
 const http = axios.create()
 
+const BaseURL = 'http://139.9.232.10:2927'
 const pending = []
 const removePending = config => {
   for (const p in pending) {
@@ -64,7 +65,7 @@ http.interceptors.response.use(
  * @return {AxiosPromise}
  */
 let msgVisible = false
-export const request = async ({ url, method = 'get', params, baseURL = 'BASE_URL', headers = {}, timeout, isToken = true, isLoop, isError = false }) => {
+export const request = async ({ url, method = 'get', params, baseURL = BaseURL, headers = {}, timeout, isToken = true, isLoop, isError = false }) => {
   return new Promise(async (resolve, reject) => {
     try {
       const result = await http({

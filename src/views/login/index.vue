@@ -4,11 +4,11 @@
     <el-form :model="form" :rules="rules" ref="form" class="login-form" label-position="left">
       <div class="project-title"><img :src="require('@img/logo.svg')" alt=""></div>
       <el-form-item class="login-form-username" label="用户名" prop="username">
-        <el-input placeholder="请输入用户名" v-model="form.username" name="username" @keyup.enter.native="login" auto-complete="on"></el-input>
+        <el-input placeholder="请输入用户名" v-model="form.username" name="username" auto-complete="on"></el-input>
       </el-form-item>
       <el-form-item class="login-form-pwd" label="密码" prop="password">
         <el-input type="password" auto-complete="new-password" placeholder="请输入密码" v-model="form.password" @keyup.enter.native="login"></el-input>
-        <a href="javascript:void(0);" class="forget-pwd" @click="$router.push({ path: '/login/resetPasswordRequest' })">忘记密码?</a>
+<!--        <a href="javascript:void(0);" class="forget-pwd" @click="$router.push({ path: '/login/resetPasswordRequest' })">忘记密码?</a>-->
       </el-form-item>
       <el-form-item class="login-form-btn">
         <el-button type="primary" :loading="loading" @click="login">登 录</el-button>
@@ -22,7 +22,7 @@ export default {
   data () {
     return {
       form: {
-        username: '',
+        username: 'iotmaster@iotsharp.net',
         password: ''
       },
       rules: {

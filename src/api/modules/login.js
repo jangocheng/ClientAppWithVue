@@ -4,7 +4,7 @@
 import { request } from '@/utils/request'
 
 export default {
-  login: params => request({ url: '/api/auth/login', method: 'post', params, isToken: false }),
+  login: params => request({ url: '/api/Account/Login', method: 'post', params, isToken: false }),
   logout: _ => request({ url: '/api/auth/logout', method: 'post' }),
   loginPublic: params => request({ url: '/api/auth/login/public', method: 'post', params, isToken: false }),
   getToken: userId => request({ url: `/api/user/${userId}/token` }),
