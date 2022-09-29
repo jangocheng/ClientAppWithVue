@@ -2,7 +2,7 @@
   <div class="login-container">
     <img class="login-bg" :src="require('@img/login-bg.png')">
     <el-form :model="form" :rules="rules" ref="form" class="login-form" label-position="left">
-      <div class="project-title">{{ require('@/settings.js').title }}</div>
+      <div class="project-title"><img :src="require('@img/logo.svg')" alt=""></div>
       <el-form-item class="login-form-username" label="用户名" prop="username">
         <el-input placeholder="请输入用户名" v-model="form.username" name="username" @keyup.enter.native="login" auto-complete="on"></el-input>
       </el-form-item>
@@ -81,7 +81,10 @@ export default {
       font-family: PingFangSC-Medium;
       font-weight: bolder;
       line-height: 67px;
-      margin-bottom: 98px;
+      margin-bottom: 25px;
+      img {
+        width: 280px;
+      }
     }
     /deep/ .el-form-item {
       margin-bottom: 37px;
